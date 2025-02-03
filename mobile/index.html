@@ -6,6 +6,60 @@
     <title>Subscription Plans</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/mobile.css">
+    <style>
+        /* Add collapsible styles */
+        .plan.collapsible .prices,
+        .plan.collapsible .plan-features {
+            height: auto;
+            opacity: 1;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .plan.collapsed .prices,
+        .plan.collapsed .plan-features {
+            height: 0;
+            opacity: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .plan-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .plan-left {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .starting-price {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.7);
+            display: none;
+        }
+
+        .plan.collapsed .starting-price {
+            display: block;
+        }
+
+        .toggle-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.3s;
+            padding: 5px;
+        }
+
+        .plan.collapsed .toggle-btn {
+            transform: rotate(-90deg);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -15,14 +69,18 @@
 
         <div class="plans">
             <!-- Basic Plan -->
-            <div class="plan basic">
+            <div class="plan basic collapsible"> <!-- Note: no 'collapsed' class by default -->
                 <div class="plan-header">
-                    <div class="plan-title">Basic</div>
-                    <div class="plan-features">
-                        <span><i class="fas fa-download"></i> Downloads</span>
-                        <span><i class="fas fa-mobile-alt"></i> 1 Device</span>
-                        <span><i class="fas fa-tv"></i> HD</span>
+                    <div class="plan-left">
+                        <div class="plan-title">Basic</div>
+                        <div class="plan-features">
+                            <span><i class="fas fa-download"></i> Downloads</span>
+                            <span><i class="fas fa-mobile-alt"></i> 1 Device</span>
+                            <span><i class="fas fa-tv"></i> HD</span>
+                        </div>
                     </div>
+                    <div class="starting-price">Starting at ₹99/month</div>
+                    <button class="toggle-btn">↓</button>
                 </div>
                 <div class="prices">
                     <label class="price-content">
@@ -50,14 +108,18 @@
             </div>
 
             <!-- Standard Plan -->
-            <div class="plan standard">
+            <div class="plan standard collapsed collapsible">
                 <div class="plan-header">
-                    <div class="plan-title">Standard</div>
-                    <div class="plan-features">
-                        <span><i class="fas fa-download"></i> Downloads</span>
-                        <span><i class="fas fa-mobile-alt"></i> 2 Devices</span>
-                        <span><i class="fas fa-tv"></i> HD</span>
+                    <div class="plan-left">
+                        <div class="plan-title">Standard</div>
+                        <div class="plan-features">
+                            <span><i class="fas fa-download"></i> Downloads</span>
+                            <span><i class="fas fa-mobile-alt"></i> 2 Devices</span>
+                            <span><i class="fas fa-tv"></i> HD</span>
+                        </div>
                     </div>
+                    <div class="starting-price">Starting at ₹170/month</div>
+                    <button class="toggle-btn">↓</button>
                 </div>
                 <div class="prices">
                     <label class="price-content">
@@ -85,14 +147,18 @@
             </div>
 
             <!-- Premium Plan -->
-            <div class="plan premium">
+            <div class="plan premium collapsed collapsible">
                 <div class="plan-header">
-                    <div class="plan-title">Premium</div>
-                    <div class="plan-features">
-                        <span><i class="fas fa-download"></i> Downloads</span>
-                        <span><i class="fas fa-mobile-alt"></i> 3 Devices</span>
-                        <span><i class="fas fa-tv"></i> HD</span>
+                    <div class="plan-left">
+                        <div class="plan-title">Premium</div>
+                        <div class="plan-features">
+                            <span><i class="fas fa-download"></i> Downloads</span>
+                            <span><i class="fas fa-mobile-alt"></i> 3 Devices</span>
+                            <span><i class="fas fa-tv"></i> HD</span>
+                        </div>
                     </div>
+                    <div class="starting-price">Starting at ₹350/month</div>
+                    <button class="toggle-btn">↓</button>
                 </div>
                 <div class="prices">
                     <label class="price-content">
@@ -136,6 +202,27 @@
     </div>
 
     <script>
+        // Set initial state for Basic plan
+        const basicPlan = document.querySelector('.plan.basic');
+        const basicToggleBtn = basicPlan.querySelector('.toggle-btn');
+        
+        // Show/hide starting price based on collapsed state
+        function updateStartingPrice(plan) {
+            const startingPrice = plan.querySelector('.starting-price');
+            startingPrice.style.display = plan.classList.contains('collapsed') ? 'block' : 'none';
+        }
+
+        // Initialize all plans
+        document.querySelectorAll('.collapsible').forEach(plan => {
+            const toggleBtn = plan.querySelector('.toggle-btn');
+            updateStartingPrice(plan);  // Set initial state
+            
+            toggleBtn.addEventListener('click', () => {
+                plan.classList.toggle('collapsed');
+                updateStartingPrice(plan);
+            });
+        });
+
         document.querySelectorAll('input[type="radio"]').forEach(radio => {
             radio.addEventListener('change', function() {
                 const plan = this.dataset.plan;
