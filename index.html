@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming Subscription</title>
+    <link rel="stylesheet" href="assets/css/desktop.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h3>Subscribe now and start streaming</h3>
+            <div class="movies-grid">
+                <!-- Movie thumbnails will be dynamically inserted here -->
+                 <img src="assets/img//movieWall.png" alt="Movie 1" style="height: 80vh;">
+            </div>
+        </div>
+        <div class="right-section">
+            <div class="feature-list">
+                <div class="feature-row plan-header-row">
+                    <div class="feature-name"></div>
+                    <div class="plan-column ">BASIC</div>
+                    <div class="plan-column">STANDARD</div>
+                    <div class="plan-column">PREMIUM</div>
+                </div>
+                
+                <div class="feature-row">
+                    <div class="feature-name">Watch on TV or Laptop</div>
+                    <div class="plan-column"><span class="feature-cross">✕</span></div>
+                    <div class="plan-column"><span class="feature-check">✓</span></div>
+                    <div class="plan-column"><span class="feature-check">✓</span></div>
+                </div>
+            
+                <div class="feature-row">
+                    <div class="feature-name">Ad-free entertainment</div>
+                    <div class="plan-column"><span class="feature-check">✓</span></div>
+                    <div class="plan-column"><span class="feature-check">✓</span></div>
+                    <div class="plan-column"><span class="feature-check">✓</span></div>
+                </div>
+            
+                <div class="feature-row">
+                    <div class="feature-name">Number of devices</div>
+                    <div class="plan-column">1</div>
+                    <div class="plan-column">2</div>
+                    <div class="plan-column">3</div>
+                </div>
+            
+                <div class="feature-row">
+                    <div class="feature-name">Video quality</div>
+                    <div class="plan-column">HD</div>
+                    <div class="plan-column">Full HD</div>
+                    <div class="plan-column">4K+HDR</div>
+                </div>
+            
+                <div class="feature-row">
+                    <div class="feature-name">Downloads available</div>
+                    <div class="plan-column"><span class="feature-cross">✕</span></div>
+                    <div class="plan-column"><span class="feature-check">✓</span></div>
+                    <div class="plan-column"><span class="feature-check">✓</span></div>
+                </div>
+            </div>
+            <div class="plans">
+                <div class="plan basic selected">
+                    <div class="plan-top">
+                        <span class="plan-name">BASIC</span>
+                        <span class="plan-check">✓</span>
+                    </div>
+                    <span class="plan-price">₹99/month</span>
+                </div>
+                <div class="plan standard">
+                    <div class="plan-top">
+                        <span class="plan-name">STANDARD</span>
+                        <span class="plan-check">✓</span>
+                    </div>
+                    <span class="plan-price">₹170/month</span>
+                </div>
+                <div class="plan premium">
+                    <div class="plan-top">
+                        <span class="plan-name">PREMIUM</span>
+                        <span class="plan-check">✓</span>
+                    </div>
+                    <span class="plan-price">₹350/month</span>
+                </div>
+            </div>
+            <div class="subscription-duration">
+                <button class="selected" data-duration="1" data-multiplier="1">
+                    <span>1 MONTH</span><span class="checkmark">✓</span>
+                </button>
+                <button data-duration="6" data-multiplier="5.5">
+                    <span>6 MONTHS</span><span class="checkmark">✓</span>
+                </button>
+                <button data-duration="12" data-multiplier="10">
+                    <span>12 MONTHS</span><span class="checkmark">✓</span>
+                </button>
+            </div>
+            <div class="cta">
+                <button class="continue">Continue with BASIC →</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const prices = {
+            'BASIC': 99,
+            'STANDARD': 170,
+            'PREMIUM': 350
+        };
+        
+        function calculatePrice(basePrice, duration) {
+            const months = parseInt(duration);
+            const totalPrice = basePrice * months;
+            // Apply 10% discount for 6 and 12 month plans
+            const discount = months > 1 ? 0.1 : 0;
+            const discountedTotal = totalPrice * (1 - discount);
+            const perMonth = Math.round(discountedTotal / months);
+            return {
+                total: Math.round(discountedTotal),
+                perMonth: perMonth
+            };
+        }
+        
+        function updateAllPlanPrices() {
+            const selectedDuration = document.querySelector('.subscription-duration button.selected');
+            const duration = selectedDuration.dataset.duration;
+            const months = parseInt(duration);
+            
+            document.querySelectorAll('.plan').forEach(plan => {
+                const priceElement = plan.querySelector('.plan-price');
+                let planType = plan.classList.contains('basic') ? 'BASIC' : 
+                              plan.classList.contains('standard') ? 'STANDARD' : 'PREMIUM';
+                
+                // Add updating class before changing price
+                priceElement.classList.add('updating');
+                
+                // Calculate new price
+                const basePrice = prices[planType];
+                const totalPrice = basePrice * months;
+                const discount = months > 1 ? 0.1 : 0;
+                const finalPrice = Math.round(totalPrice * (1 - discount));
+                
+                // Update price text after a small delay
+                setTimeout(() => {
+                    const displayText = months === 1 ? 
+                        `₹${finalPrice}/month` : 
+                        `₹${finalPrice}/${months} months`;
+                    priceElement.textContent = displayText;
+                    
+                    // Remove updating class after content is updated
+                    requestAnimationFrame(() => {
+                        priceElement.classList.remove('updating');
+                    });
+                }, 150);
+            });
+        }
+        
+        function updateSelectedPlan() {
+            const selectedPlan = document.querySelector('.plan.selected').innerText.split('\n')[0];
+            
+            // Update continue button with just the plan name
+            document.querySelector('.continue').innerText = `Continue with ${selectedPlan} →`;
+        }
+
+        document.querySelectorAll('.plan').forEach(plan => {
+            plan.addEventListener('click', function() {
+                const featureList = document.querySelector('.feature-list');
+                featureList.classList.remove('basic-selected', 'standard-selected', 'premium-selected');
+                
+                document.querySelectorAll('.plan').forEach(p => p.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                // Add appropriate class for column highlighting
+                if (this.classList.contains('basic')) {
+                    featureList.classList.add('basic-selected');
+                } else if (this.classList.contains('standard')) {
+                    featureList.classList.add('standard-selected');
+                } else if (this.classList.contains('premium')) {
+                    featureList.classList.add('premium-selected');
+                }
+                
+                updateSelectedPlan();
+            });
+        });
+        
+        document.querySelectorAll('.subscription-duration button').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.subscription-duration button').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                updateAllPlanPrices();
+                updateSelectedPlan();
+            });
+        });
+
+        // Initialize display
+        updateAllPlanPrices();
+        updateSelectedPlan();
+        // Initialize the column highlight
+        document.querySelector('.feature-list').classList.add('basic-selected');
+    </script>
+</body>
+</html>

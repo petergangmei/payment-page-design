@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Plans</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/mobile.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Subscribe now and start streaming</h2>
+        </div>
+
+        <div class="plans">
+            <!-- Basic Plan -->
+            <div class="plan basic">
+                <div class="plan-header">
+                    <div class="plan-title">Basic</div>
+                    <div class="plan-features">
+                        <span><i class="fas fa-download"></i> Downloads</span>
+                        <span><i class="fas fa-mobile-alt"></i> 1 Device</span>
+                        <span><i class="fas fa-tv"></i> HD</span>
+                    </div>
+                </div>
+                <div class="prices">
+                    <label class="price-content">
+                        <div class="duration">
+                            <p>1 Month</p>
+                            <p>₹99</p>
+                        </div>
+                        <input type="radio" name="plan" data-plan="Basic" data-duration="1 Month" data-price="99" checked />
+                    </label>
+                    <label class="price-content">
+                        <div class="duration">
+                            <p>6 Months</p>
+                            <p>₹599</p>
+                        </div>
+                        <input type="radio" name="plan" data-plan="Basic" data-duration="6 Months" data-price="599" />
+                    </label>
+                    <label class="price-content">
+                        <div class="duration">
+                            <p>12 Months</p>
+                            <p>₹1200</p>
+                        </div>
+                        <input type="radio" name="plan" data-plan="Basic" data-duration="12 Months" data-price="1200" />
+                    </label>
+                </div>
+            </div>
+
+            <!-- Standard Plan -->
+            <div class="plan standard">
+                <div class="plan-header">
+                    <div class="plan-title">Standard</div>
+                    <div class="plan-features">
+                        <span><i class="fas fa-download"></i> Downloads</span>
+                        <span><i class="fas fa-mobile-alt"></i> 2 Devices</span>
+                        <span><i class="fas fa-tv"></i> HD</span>
+                    </div>
+                </div>
+                <div class="prices">
+                    <label class="price-content">
+                        <div class="duration">
+                            <p>1 Month</p>
+                            <p>₹150</p>
+                        </div>
+                        <input type="radio" name="plan" data-plan="Standard" data-duration="1 Month" data-price="150" />
+                    </label>
+                    <label class="price-content">
+                        <div class="duration">
+                            <p>6 Months</p>
+                            <p>₹700</p>
+                        </div>
+                        <input type="radio" name="plan" data-plan="Standard" data-duration="6 Months" data-price="700" />
+                    </label>
+                    <label class="price-content">
+                        <div class="duration">
+                            <p>12 Months</p>
+                            <p>₹1899</p>
+                        </div>
+                        <input type="radio" name="plan" data-plan="Standard" data-duration="12 Months" data-price="1899" />
+                    </label>
+                </div>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="plan premium">
+                <div class="plan-header">
+                    <div class="plan-title">Premium</div>
+                    <div class="plan-features">
+                        <span><i class="fas fa-download"></i> Downloads</span>
+                        <span><i class="fas fa-mobile-alt"></i> 3 Devices</span>
+                        <span><i class="fas fa-tv"></i> HD</span>
+                    </div>
+                </div>
+                <div class="prices">
+                    <label class="price-content">
+                        <div class="duration">
+                            <p>1 Month</p>
+                            <p>₹350</p>
+                        </div>
+                        <input type="radio" name="plan" data-plan="Premium" data-duration="1 Month" data-price="350" />
+                    </label>
+                    <label class="price-content">
+                        <div class="duration">
+                            <p>6 Months</p>
+                            <p>₹1500</p>
+                        </div>
+                        <input type="radio" name="plan" data-plan="Premium" data-duration="6 Months" data-price="1500" />
+                    </label>
+                    <label class="price-content">
+                        <div class="duration">
+                            <p>12 Months</p>
+                            <p>₹2500</p>
+                        </div>
+                        <input type="radio" name="plan" data-plan="Premium" data-duration="12 Months" data-price="2500" />
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-wrapper">
+        <div class="footer">
+            <ul>
+                <li>Access unlimited streaming without any ads/interruption.</li>
+                <li>Download videos and play offline anywhere.</li>
+                <li>Enjoy HD content at your fingertip.</li>
+            </ul>
+        </div>
+        <div class="cta">
+            <span id="selected-plan">₹149 Basic x 1 Month</span>
+            <button>Continue</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const plan = this.dataset.plan;
+                const duration = this.dataset.duration;
+                const price = this.dataset.price;
+                const display = document.getElementById('selected-plan');
+                display.textContent = `₹${price} ${plan} x ${duration}`;
+            });
+        });
+    </script>
+</body>
+</html>
