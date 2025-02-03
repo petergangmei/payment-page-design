@@ -63,6 +63,28 @@ body {
     margin-bottom: 8px;
     letter-spacing: -0.5px;
 }
+.toggle-btn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background 0.3s;
+}
+.starting-price{
+    position: absolute;
+    top: 16px;
+    right: 35px;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.8);
+}
+.plan-left{
+    display: flex;
+}
 
 .plan-features {
     display: flex;
@@ -112,6 +134,7 @@ body {
 .duration {
     display: flex;
     flex-direction: column;
+    font-size: 0.8em;
     gap: 2px;
 }
 

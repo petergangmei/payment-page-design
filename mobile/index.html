@@ -59,6 +59,46 @@
         .plan.collapsed .toggle-btn {
             transform: rotate(-90deg);
         }
+
+        /* Expanded state styles for plans */
+        .plan.basic:not(.collapsed) {
+            background: linear-gradient(135deg, #4A4A4A, #5c5c5c);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .plan.standard:not(.collapsed) {
+            background: linear-gradient(135deg, #1C1B50, #2a2974);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .plan.premium:not(.collapsed) {
+            background: linear-gradient(135deg, #5C5C2A, #7a7a37);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Default (collapsed) state backgrounds */
+        .plan.basic.collapsed {
+            background: linear-gradient(135deg, #333333, #4A4A4A);
+            border: none;
+        }
+
+        .plan.standard.collapsed {
+            background: linear-gradient(135deg, #0F0E29, #1C1B50);
+            border: none;
+        }
+
+        .plan.premium.collapsed {
+            background: linear-gradient(135deg, #3B3B14, #5C5C2A);
+            border: none;
+        }
+
+        /* Add transition for smooth effect */
+        .plan {
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 <body>
