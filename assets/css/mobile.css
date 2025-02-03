@@ -6,6 +6,7 @@ body {
     padding: 0;
 }
 
+/* ...copy all existing styles from the <style> tag... */
 .container {
     max-width: 400px;
     margin: 20px auto;
@@ -37,72 +38,75 @@ body {
     padding: 15px;
     color: #FFFFFF;
     position: relative;
-    transition: all 0.3s ease;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.plan.basic { background: linear-gradient(135deg, #333333, #4A4A4A); }
-.plan.standard { background: linear-gradient(135deg, #0F0E29, #1C1B50); }
-.plan.premium { background: linear-gradient(135deg, #3B3B14, #5C5C2A); }
+.plan.basic {
+    background: linear-gradient(135deg, #333333, #4A4A4A);
+}
+
+.plan.standard {
+    background: linear-gradient(135deg, #0F0E29, #1C1B50);
+}
+
+.plan.premium {
+    background: linear-gradient(135deg, #3B3B14, #5C5C2A);
+}
 
 .plan-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 15px;
 }
 
 .plan-title {
     font-size: 1.4em;
     font-weight: 600;
+    margin-bottom: 8px;
     letter-spacing: -0.5px;
 }
-
-.toggle-btn {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: transform 0.3s;
-    padding: 5px;
+.toggle-btn{
     position: absolute;
     top: 10px;
     right: 10px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background 0.3s;
 }
-
-.plan.collapsed .toggle-btn {
-    transform: rotate(-90deg);
-}
-
-.starting-price {
+.starting-price{
     position: absolute;
     top: 16px;
     right: 35px;
     font-size: 0.8em;
     color: rgba(255, 255, 255, 0.8);
-    display: none;
 }
-
-.plan.collapsed .starting-price {
-    display: block;
+.plan-left{
+    display: flex;
 }
 
 .plan-features {
     display: flex;
     justify-content: space-between;
+    padding: 3px 5px;
     gap: 15px;
     font-size: 0.85em;
     color: rgba(255, 255, 255, 0.8);
     margin-top: 5px;
 }
 
-.plan.collapsed .prices,
-.plan.collapsed .plan-features {
-    height: 0;
-    opacity: 0;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+.plan-features span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.plan-features i {
+    font-size: 1em;
+    width: 16px;
+    text-align: center;
+    margin-right: 4px;
 }
 
 .prices {
@@ -125,6 +129,28 @@ body {
 
 .price-content:hover {
     border-color: rgba(255, 255, 255, 0.5);
+}
+
+.duration {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.sem;
+    gap: 2px;
+}
+
+.duration p {
+    margin: 0;
+    padding: 0;
+}
+
+.duration p:first-child {
+    font-size: 0.9em;
+    color: #cccccc;
+}
+
+.duration p:last-child {
+    font-size: 1.1em;
+    font-weight: 500;
 }
 
 .price-content input[type="radio"] {
@@ -156,7 +182,25 @@ body {
     font-weight: bold;
 }
 
+.footer {
+    margin: 30px 0px;
+    text-align: center;
+}
+
+.footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer ul li {
+    margin-bottom: 3px;
+    font-size: 0.85em;
+}
+
 .cta {
+    margin: 0;
+    max-width: 400px;
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
@@ -166,14 +210,19 @@ body {
 .cta span {
     font-size: 1.1em;
     color: #FFC107;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .cta button {
+    min-width: 100px;
     background-color: #FFC107;
     border: none;
     border-radius: 5px;
     color: #000;
     padding: 12px 20px;
+    white-space: nowrap;
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s;
@@ -197,17 +246,98 @@ body {
     z-index: 1000;
 }
 
-.plan:not(.collapsed) {
+#selected-plan{
+    min-width: 240px;
+}
+
+.plan.collapsible .prices,
+.plan.collapsible .plan-features {
+    height: auto;
+    opacity: 1;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.plan.collapsed .prices,
+.plan.collapsed .plan-features {
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.plan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.plan-left {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.starting-price {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+    display: none;
+}
+
+.plan.collapsed .starting-price {
+    display: block;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: transform 0.3s;
+    padding: 5px;
+}
+
+.plan.collapsed .toggle-btn {
+    transform: rotate(-90deg);
+}
+
+/* Expanded state styles for plans */
+.plan.basic:not(.collapsed) {
+    background: linear-gradient(135deg, #4A4A4A, #5c5c5c);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.plan.basic:not(.collapsed) { background: linear-gradient(135deg, #4A4A4A, #5c5c5c); }
-.plan.standard:not(.collapsed) { background: linear-gradient(135deg, #1C1B50, #2a2974); }
-.plan.premium:not(.collapsed) { background: linear-gradient(135deg, #5C5C2A, #7a7a37); }
+.plan.standard:not(.collapsed) {
+    background: linear-gradient(135deg, #1C1B50, #2a2974);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
 
-.plan.collapsed { border: none; }
+.plan.premium:not(.collapsed) {
+    background: linear-gradient(135deg, #5C5C2A, #7a7a37);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
 
-.plan.basic.collapsed { background: linear-gradient(135deg, #333333, #4A4A4A); }
-.plan.standard.collapsed { background: linear-gradient(135deg, #0F0E29, #1C1B50); }
-.plan.premium.collapsed { background: linear-gradient(135deg, #3B3B14, #5C5C2A); }
+/* Default (collapsed) state backgrounds */
+.plan.basic.collapsed {
+    background: linear-gradient(135deg, #333333, #4A4A4A);
+    border: none;
+}
+
+.plan.standard.collapsed {
+    background: linear-gradient(135deg, #0F0E29, #1C1B50);
+    border: none;
+}
+
+.plan.premium.collapsed {
+    background: linear-gradient(135deg, #3B3B14, #5C5C2A);
+    border: none;
+}
+
+/* Add transition for smooth effect */
+.plan {
+    transition: all 0.3s ease;
+}
