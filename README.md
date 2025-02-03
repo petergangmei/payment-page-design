@@ -6,16 +6,12 @@ A simple and responsive payment page design project that demonstrates how to cre
 
 - [Demo](#demo)
 - [Features](#features)
-- [Folder Structure](#folder-structure)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Folder Structure](#features)
 
 ## Demo
 
 - Mobile Payment View: [View Demo](https://petergangmei.github.io/payment-page-design/mobile/)
-- Web Payment View: [View Demo](https://petergangmei.github.io/payment-page-design/mobile/)  
+- Web Payment View: [View Demo](https://petergangmei.github.io/payment-page-design/)  
   (Note: The link is currently the same as the mobile view. If there is a separate web view, update this link accordingly.)
 
 ## Features
@@ -25,3 +21,8 @@ A simple and responsive payment page design project that demonstrates how to cre
 - Example placeholders for card details, user information, and payment method selection.
 
 ## Folder Structure
+- aseets/img/
+- assets/css/
+- assets/script/
+- mobile/index.html
+- index.html
