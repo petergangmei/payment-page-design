@@ -106,13 +106,14 @@ body {
     color: white;
 }
 .subscription-duration {
-    margin-top: 30px;
+    margin: 20px auto; /* Changed from fixed vh margins */
     background-color: #222;
-    margin: 20px 25vh;
     border-radius: 13px;
     display: flex;
-    justify-content: center; /* Add this */
-    align-items: center; /* Add this */
+    justify-content: center;
+    align-items: center;
+    width: 80%; /* Add responsive width */
+    max-width: 500px; /* Add max-width */
 }
 .subscription-duration button {
     min-width: 100px; /* Add this for consistent button widths */
@@ -270,4 +271,73 @@ button:hover, button.selected {
     font-size: 0.8em;
     color: rgba(255, 255, 255, 0.6);
     margin-top: 2px;
+}
+
+/* Add responsive styles */
+@media screen and (max-width: 1024px) {
+    .left-section {
+        display: none; /* Hide left section */
+    }
+
+    .right-section {
+        width: 100%; /* Take full width */
+        padding-left: 0; /* Remove left padding */
+        margin-top: 0; /* Remove top margin */
+    }
+
+    .container {
+        width: 95%; /* Increase width on smaller screens */
+        margin-top: 2%;
+        padding: 15px;
+    }
+
+    .plans {
+        margin: 5px 10px; /* Reduce side margins */
+    }
+
+    .subscription-duration {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    /* Adjust other spacing for better mobile view */
+    .feature-list {
+        margin: 15px 0;
+    }
+
+    .feature-row {
+        padding: 7px 5px;
+    }
+}
+
+/* Optional: Additional adjustments for even smaller screens */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        margin-top: 0;
+        border-radius: 0;
+    }
+
+    .subscription-duration {
+        width: 95%;
+        margin: 15px auto;
+    }
+
+    .subscription-duration button {
+        min-width: 80px; /* Reduce min-width on smaller screens */
+        padding: 5px 2px;
+        font-size: 0.9em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .subscription-duration {
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    .subscription-duration button {
+        min-width: 70px;
+        font-size: 0.8em;
+    }
 }
