@@ -21,9 +21,26 @@
                     <div class="plan-left">
                         <div class="plan-title">Basic</div>
                         <div class="plan-features">
-                            <span><i class="fas fa-download"></i> Downloads</span>
-                            <span><i class="fas fa-mobile-alt"></i> 1 Device</span>
-                            <span><i class="fas fa-tv"></i> HD</span>
+                            <span>
+                                <i class="fas fa-mobile-alt"></i>
+                                Mobile only
+                            </span>
+                            <span>
+                                <i class="fas fa-user"></i>
+                                1 Device
+                            </span>
+                            <span>
+                                <i class="fas fa-tv"></i>
+                                HD
+                            </span>
+                            <span>
+                                <i class="fas fa-download"></i>
+                                Download
+                            </span>
+                            <span>
+                                <i class="fas fa-ban"></i>
+                                Ad-free
+                            </span>
                         </div>
                     </div>
                     <div class="starting-price">Starting at ₹99/month</div>
@@ -60,9 +77,26 @@
                     <div class="plan-left">
                         <div class="plan-title">Standard</div>
                         <div class="plan-features">
-                            <span><i class="fas fa-download"></i> Downloads</span>
-                            <span><i class="fas fa-mobile-alt"></i> 2 Devices</span>
-                            <span><i class="fas fa-tv"></i> HD</span>
+                            <span>
+                                <i class="fas fa-tv"></i>
+                                All devices
+                            </span>
+                            <span>
+                                <i class="fas fa-users"></i>
+                                2 Devices
+                            </span>
+                            <span>
+                                <i class="fas fa-video"></i>
+                                Full HD
+                            </span>
+                            <span>
+                                <i class="fas fa-download"></i>
+                                Download
+                            </span>
+                            <span>
+                                <i class="fas fa-ban"></i>
+                                Ad-free
+                            </span>
                         </div>
                     </div>
                     <div class="starting-price">Starting at ₹170/month</div>
@@ -99,9 +133,26 @@
                     <div class="plan-left">
                         <div class="plan-title">Premium</div>
                         <div class="plan-features">
-                            <span><i class="fas fa-download"></i> Downloads</span>
-                            <span><i class="fas fa-mobile-alt"></i> 3 Devices</span>
-                            <span><i class="fas fa-tv"></i> HD</span>
+                            <span>
+                                <i class="fas fa-tv"></i>
+                                All devices
+                            </span>
+                            <span>
+                                <i class="fas fa-users"></i>
+                                4 Devices
+                            </span>
+                            <span>
+                                <i class="fas fa-film"></i>
+                                4K+HDR
+                            </span>
+                            <span>
+                                <i class="fas fa-download"></i>
+                                Download
+                            </span>
+                            <span>
+                                <i class="fas fa-ban"></i>
+                                Ad-free
+                            </span>
                         </div>
                     </div>
                     <div class="starting-price">Starting at ₹350/month</div>
@@ -141,10 +192,14 @@
         </div>
     </div>
 
+    <!-- Update the CTA section -->
     <div class="bottom-wrapper">
         <div class="cta">
-            <span id="selected-plan">₹149 Basic x 1 Month</span>
-            <button>Continue</button>
+            <div id="selected-plan">
+                <div class="selected-price">₹149</div>
+                <div class="selected-details">Basic × 1 Month</div>
+            </div>
+            <button>Continue →</button>
         </div>
     </div>
 
@@ -176,7 +231,10 @@
                 const duration = this.dataset.duration;
                 const price = this.dataset.price;
                 const display = document.getElementById('selected-plan');
-                display.textContent = `₹${price} ${plan} x ${duration}`;
+                display.innerHTML = `
+                    <div class="selected-price">₹${price}</div>
+                    <div class="selected-details">${plan} × ${duration}</div>
+                `;
             });
         });
     </script>

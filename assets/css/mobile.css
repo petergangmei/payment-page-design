@@ -6,10 +6,9 @@ body {
     padding: 0;
 }
 
-/* ...copy all existing styles from the <style> tag... */
 .container {
     max-width: 400px;
-    margin: 20px auto;
+    margin: 0px auto;
     padding: 20px;
     background-color: #2A2A2A;
     border-radius: 15px;
@@ -24,7 +23,7 @@ body {
 
 .header h2 {
     font-size: 1.3em;
-    color: #FFC107;
+    color: lightgray;
 }
 
 .plans {
@@ -84,29 +83,41 @@ body {
 }
 .plan-left{
     display: flex;
+    width: 100%;
+    padding-right: 30px; /* Space for toggle button */
 }
 
 .plan-features {
     display: flex;
-    justify-content: space-between;
-    padding: 3px 5px;
-    gap: 15px;
+    width: 110%;
+    padding: 3px 0;
+    gap: 0; /* Remove gap */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    justify-content: space-between; /* Distribute items evenly */
     font-size: 0.85em;
     color: rgba(255, 255, 255, 0.8);
     margin-top: 5px;
 }
 
 .plan-features span {
+    flex: 1; /* Equal width distribution */
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 4px;
+    text-align: center;
+    padding: 0 4px;
+    min-width: 0; /* Allow text to shrink if needed */
+    font-size: 0.75em; /* Slightly smaller font size */
 }
 
 .plan-features i {
-    font-size: 1em;
-    width: 16px;
-    text-align: center;
-    margin-right: 4px;
+    font-size: 1.3em;
+    color: lightgray;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
 }
 
 .prices {
@@ -119,11 +130,13 @@ body {
 .price-content {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 8px 12px;
+    padding: 8px 5px;
     border-radius: 6px;
-    gap: 10px;
+    gap: 40px;
+    width: 100%;
     transition: border-color 0.3s;
 }
 
@@ -135,7 +148,7 @@ body {
     display: flex;
     flex-direction: column;
     font-size: 0.sem;
-    gap: 2px;
+    gap: 5px;
 }
 
 .duration p {
@@ -144,13 +157,15 @@ body {
 }
 
 .duration p:first-child {
-    font-size: 0.9em;
+    font-size: 0.7em;
     color: #cccccc;
 }
 
 .duration p:last-child {
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 500;
+    color:lightgray;
+    font-family: Josefin Sans, sans-serif;
 }
 
 .price-content input[type="radio"] {
@@ -184,23 +199,24 @@ body {
 
 .footer {
     margin: 30px 0px;
-    text-align: center;
+    padding: 10px 15px;
 }
 
 .footer ul {
-    list-style-type: none;
+    /* list-style-type: none; */
+    font-family: Josefin Sans, sans-serif;
+    font-size: 0.8em;
     padding: 0;
     margin: 0;
 }
 
 .footer ul li {
-    margin-bottom: 3px;
+    margin-bottom: 7px;
     font-size: 0.85em;
 }
 
 .cta {
     margin: 0;
-    max-width: 400px;
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
@@ -216,8 +232,8 @@ body {
 }
 
 .cta button {
-    min-width: 100px;
-    background-color: #FFC107;
+    min-width: 200px;
+    background-color: #fff;
     border: none;
     border-radius: 5px;
     color: #000;
@@ -247,7 +263,23 @@ body {
 }
 
 #selected-plan{
-    min-width: 240px;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.selected-price {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: white;
+    line-height: 1;
+}
+
+.selected-details {
+    font-size: 0.65em;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .plan.collapsible .prices,
@@ -316,7 +348,7 @@ body {
 }
 
 .plan.premium:not(.collapsed) {
-    background: linear-gradient(135deg, #5C5C2A, #7a7a37);
+    background: linear-gradient(135deg, #5C5C2A, #876d21);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -333,7 +365,7 @@ body {
 }
 
 .plan.premium.collapsed {
-    background: linear-gradient(135deg, #3B3B14, #5C5C2A);
+    background: linear-gradient(135deg, #3B3B14, #ad9310);
     border: none;
 }
 

@@ -112,7 +112,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%; /* Add responsive width */
+    width: 65%; /* Add responsive width */
     max-width: 500px; /* Add max-width */
 }
 .subscription-duration button {
@@ -188,8 +188,9 @@ button:hover, button.selected {
 
 .plan-column {
     text-align: center;
-    font-size: 0.9em;
+    font-size: 0.8em;
     display: flex;
+    font-family: 'Julius Sans One', sans-serif;
     align-items: center;
     justify-content: center;
     color: white; /* Add this to make plan names yellow */
