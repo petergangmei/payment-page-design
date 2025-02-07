@@ -102,23 +102,22 @@
     </div>
     <script>
         const prices = {
-            'BASIC': 99,
-            'STANDARD': 170,
-            'PREMIUM': 350
+            'BASIC': {
+                1: 99,
+                6: 499,
+                12: 1000
+            },
+            'STANDARD': {
+                1: 249,
+                6: 1245,
+                12: 2490
+            },
+            'PREMIUM': {
+                1: 449,
+                6: 1796,
+                12: 4490
+            }
         };
-        
-        function calculatePrice(basePrice, duration) {
-            const months = parseInt(duration);
-            const totalPrice = basePrice * months;
-            // Apply 10% discount for 6 and 12 month plans
-            const discount = months > 1 ? 0.1 : 0;
-            const discountedTotal = totalPrice * (1 - discount);
-            const perMonth = Math.round(discountedTotal / months);
-            return {
-                total: Math.round(discountedTotal),
-                perMonth: perMonth
-            };
-        }
         
         function updateAllPlanPrices() {
             const selectedDuration = document.querySelector('.subscription-duration button.selected');
@@ -133,11 +132,8 @@
                 // Add updating class before changing price
                 priceElement.classList.add('updating');
                 
-                // Calculate new price
-                const basePrice = prices[planType];
-                const totalPrice = basePrice * months;
-                const discount = months > 1 ? 0.1 : 0;
-                const finalPrice = Math.round(totalPrice * (1 - discount));
+                // Get price directly from the prices object
+                const finalPrice = prices[planType][months];
                 
                 // Update price text after a small delay
                 setTimeout(() => {
