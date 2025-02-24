@@ -38,6 +38,12 @@ body {
     color: #FFFFFF;
     position: relative;
     transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.plan:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .plan.basic {
@@ -63,18 +69,11 @@ body {
     margin-bottom: 8px;
     letter-spacing: -0.5px;
 }
+
 .toggle-btn{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 0.8em;
-    transition: background 0.3s;
+    display: none;
 }
+
 .starting-price{
     position: absolute;
     top: 16px;
@@ -82,6 +81,7 @@ body {
     font-size: 0.8em;
     color: rgba(255, 255, 255, 0.8);
 }
+
 .plan-left{
     display: flex;
     width: 100%;
@@ -331,20 +331,6 @@ body {
 
 .plan.collapsed .starting-price {
     display: block;
-}
-
-.toggle-btn {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: transform 0.3s;
-    padding: 5px;
-}
-
-.plan.collapsed .toggle-btn {
-    transform: rotate(-90deg);
 }
 
 .plan.premium .toggle-btn {

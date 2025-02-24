@@ -44,7 +44,6 @@
                         </div>
                     </div>
                     <div class="starting-price">Starting at ₹99/month</div>
-                    <button class="toggle-btn">↓</button>
                 </div>
                 <div class="prices">
                     <label class="price-content">
@@ -100,7 +99,6 @@
                         </div>
                     </div>
                     <div class="starting-price">Starting at ₹249/month</div>
-                    <button class="toggle-btn">↓</button>
                 </div>
                 <div class="prices">
                     <label class="price-content">
@@ -156,7 +154,6 @@
                         </div>
                     </div>
                     <div class="starting-price">Starting at ₹449/month</div>
-                    <button class="toggle-btn">↓</button>
                 </div>
                 <div class="prices">
                     <label class="price-content">
@@ -216,10 +213,14 @@
 
         // Initialize all plans
         document.querySelectorAll('.collapsible').forEach(plan => {
-            const toggleBtn = plan.querySelector('.toggle-btn');
             updateStartingPrice(plan);  // Set initial state
             
-            toggleBtn.addEventListener('click', () => {
+            // Make the entire plan clickable
+            plan.addEventListener('click', (event) => {
+                // Prevent click event if clicking on radio buttons or their labels
+                if (event.target.closest('.price-content')) {
+                    return;
+                }
                 plan.classList.toggle('collapsed');
                 updateStartingPrice(plan);
             });
