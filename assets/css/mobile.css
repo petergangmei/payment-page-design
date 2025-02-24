@@ -77,7 +77,7 @@ body {
 .starting-price{
     position: absolute;
     top: 16px;
-    right: 35px;
+    right: 45px;
     font-size: 0.8em;
     color: rgba(255, 255, 255, 0.8);
 }
@@ -324,9 +324,11 @@ body {
 }
 
 .starting-price {
-    font-size: 0.9em;
-    color: rgba(255, 255, 255, 0.7);
-    display: none;
+    position: absolute;
+    top: 16px;
+    right: 45px;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .plan.collapsed .starting-price {
@@ -341,6 +343,26 @@ body {
 .plan.premium .starting-price,
 .plan.premium .plan-title,
 .plan.premium .duration p {
+    color: #2c1b47;
+}
+
+.expand-indicator {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1em;
+    transition: transform 0.3s ease;
+}
+
+.plan.collapsed .expand-indicator {
+    transform: rotate(0deg);
+}
+
+.plan:not(.collapsed) .expand-indicator {
+    transform: rotate(180deg);
+}
+
+.plan.premium .expand-indicator {
     color: #2c1b47;
 }
 
