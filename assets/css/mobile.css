@@ -50,6 +50,7 @@ body {
 
 .plan.premium {
     background: linear-gradient(135deg, #3B3B14, #5C5C2A);
+    border: 2px solid #e0e0e0;
 }
 
 .plan-header {
@@ -95,7 +96,7 @@ body {
     flex-wrap: nowrap; /* Prevent wrapping */
     justify-content: space-between; /* Distribute items evenly */
     font-size: 0.85em;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 1); /* Changed from 0.8 to 1 for full opacity */
     margin-top: 5px;
 }
 
@@ -120,6 +121,10 @@ body {
     margin-bottom: 4px;
 }
 
+.plan.premium .fas {
+    color: #000000;
+}
+
 .prices {
     display: flex;
     justify-content: space-between;
@@ -138,6 +143,14 @@ body {
     gap: 10px;
     width: 100%;
     transition: border-color 0.3s;
+}
+
+.plan.premium .price-content {
+    border: 1px solid #6e6a6a;
+}
+
+.plan.premium .price-content input[type="radio"] {
+    border-color: #6e6a6a;
 }
 
 .price-content:hover {
@@ -334,21 +347,32 @@ body {
     transform: rotate(-90deg);
 }
 
+.plan.premium .toggle-btn {
+    color: #000000;
+}
+
+.plan.premium .plan-features,
+.plan.premium .starting-price,
+.plan.premium .plan-title,
+.plan.premium .duration p {
+    color: #000000;
+}
+
 /* Expanded state styles for plans */
 .plan.basic:not(.collapsed) {
-    background: linear-gradient(135deg, #4A4A4A, #5c5c5c);
+    background: linear-gradient(135deg, #000000, #1b202c);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .plan.standard:not(.collapsed) {
-    background: linear-gradient(135deg, #1C1B50, #2a2974);
+    background: linear-gradient(135deg, #000000, #001d5b);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .plan.premium:not(.collapsed) {
-    background: linear-gradient(135deg, #5C5C2A, #876d21);
+    background: linear-gradient(135deg, #fbe200, #ecc656);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -365,7 +389,7 @@ body {
 }
 
 .plan.premium.collapsed {
-    background: linear-gradient(135deg, #3B3B14, #ad9310);
+    background: linear-gradient(135deg, #c6c619, #deaa0d);
     border: none;
 }
 
