@@ -122,7 +122,7 @@ body {
 }
 
 .plan.premium .fas {
-    color: #000000;
+    color: #2c1b47;
 }
 
 .prices {
@@ -348,14 +348,14 @@ body {
 }
 
 .plan.premium .toggle-btn {
-    color: #000000;
+    color: #2c1b47;
 }
 
 .plan.premium .plan-features,
 .plan.premium .starting-price,
 .plan.premium .plan-title,
 .plan.premium .duration p {
-    color: #000000;
+    color: #2c1b47;
 }
 
 /* Expanded state styles for plans */
