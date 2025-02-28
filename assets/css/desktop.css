@@ -188,7 +188,7 @@ button:hover, button.selected {
 
 .plan-column {
     text-align: center;
-    font-size: 0.9em;
+    font-size: 0.8em;
     display: flex;
     font-family: 'Julius Sans One', sans-serif;
     align-items: center;
