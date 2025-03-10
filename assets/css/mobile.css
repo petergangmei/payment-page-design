@@ -229,11 +229,12 @@ body {
 }
 
 .cta {
+    width: 100%;
     margin: 0;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 15px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
 }
 
 .cta span {
@@ -276,11 +277,11 @@ body {
 }
 
 #selected-plan{
-    min-width: 160px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 2px;
+    margin-left: 10px;
 }
 
 .selected-price {
