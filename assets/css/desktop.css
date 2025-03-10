@@ -1,12 +1,14 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #111;
-    color: white;
+    background-color: #111 !important;
+    color: white !important;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 90vh;
     margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 .container {
     display: flex;
@@ -40,7 +42,7 @@ body {
 }
 .plan {
     /* background: #333; */
-    border: 2px solid #333;
+    border: 2px solid #333 !important;
     padding: 10px 15px;
     border-radius: 10px;
     cursor: pointer;
@@ -49,6 +51,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    background-color: transparent !important;
 }
 
 .plan-top {
@@ -60,26 +63,44 @@ body {
 .plan-name {
     font-size: 0.7em;
     font-weight: 500;
-    color: #FFC107; /* Add this */
+    color: #FFC107 !important; /* Force consistent color */
 }
 
 .plan-check {
     width: 15px;
     height: 15px;
-    border: 2px solid #111;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: transparent; /* Hide checkmark by default */
     transition: all 0.3s ease;
+    background-color: transparent !important;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
 }
 
 .plan.selected .plan-check {
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    background: white;
-    border-color: white;
-    color: black; /* Show checkmark when selected */
+    border: 2px solid #FFFFFF !important;
+    background: #FFC107 !important;
+    border-color: #FFC107 !important;
+    color: black !important; /* Show checkmark when selected */
+}
+
+.plan.selected .plan-check::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000000 !important;
+    font-size: 10px;
+    font-weight: bold;
 }
 
 .plan-price {
@@ -98,7 +119,8 @@ body {
 }
 
 .plan.selected {
-    color:#FFC107;
+    color: #FFC107 !important;
+    border-color: #FFC107 !important;
 }
 
 .plan.selected ,
@@ -197,7 +219,7 @@ button:hover, button.selected {
 }
 
 .feature-check {
-    color: white;  /* Changed from #FFC107 to white */
+    color: white !important;  /* Force white color */
     font-size: 13px;
     font-weight: bold;
     display: inline-block;
@@ -207,7 +229,7 @@ button:hover, button.selected {
 }
 
 .feature-cross {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.4) !important;
     font-size: 16px;
     font-weight: bold;
     display: inline-block;
@@ -224,7 +246,7 @@ button:hover, button.selected {
 }
 
 .plan-header-row div{
-    color:#FFC107;
+    color: #FFC107 !important;
 }
 
 .feature-row > div {
